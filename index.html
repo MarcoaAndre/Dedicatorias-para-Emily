@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Todo mi amor para Emily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{margin:0;font-family:Quicksand,system-ui,sans-serif;color:#4b3f72;background:#e9dcff}
+.hero,.slide{min-height:100svh;display:flex;align-items:center;justify-content:center;gap:48px;padding:40px 6vw;position:relative;overflow:hidden;scroll-snap-align:start}
+.hero{flex-direction:column;text-align:center;background:linear-gradient(160deg,#d6e8ff,#efe3ff 55%,#ffe4f1)}
+.hero h1{font-family:'Dancing Script',cursive,serif;font-size:clamp(2.6rem,11vw,6rem);margin:0;color:#6a52c9;line-height:1.1}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(30px);animation:up .9s forwards}
+.hero h1 em{color:#4a8fe7;font-style:normal}
+.hero p{margin:12px 0 0;font-size:1.1rem;opacity:0;animation:up 1s 1.6s forwards}
+.hint{position:absolute;bottom:28px;font-size:1.8rem;color:#7a6bd6;animation:bob 1.6s infinite}
+.blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.55;animation:float 9s ease-in-out infinite}
+.slide{background:linear-gradient(150deg,var(--a),var(--c))}
+.slide.rev{flex-direction:row-reverse}
+.frame{position:relative;padding:14px;border-radius:26px;background:linear-gradient(135deg,#9cc3ff,#c9a8ff,#9cc3ff);box-shadow:0 18px 40px #6a52c93d;transform:rotate(var(--r));max-width:min(440px,80vw)}
+.frame img{display:block;max-width:100%;max-height:62vh;border-radius:14px;border:5px solid #fff}
+.orn{position:absolute;font-size:1.7rem;color:#fff;text-shadow:0 2px 8px #6a52c9}.o1{top:-14px;left:-10px}.o2{bottom:-16px;right:-8px;color:#ffd6ec}
+.txt{max-width:360px;background:#ffffffa6;backdrop-filter:blur(6px);padding:24px 28px;border-radius:22px;border-left:5px solid #8f7be8}
+.txt small{color:#4a8fe7;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.txt p{font-size:1.15rem;line-height:1.6;margin:10px 0 0}
+.reveal{opacity:0;transition:opacity 1s,transform 1s}
+.frame.reveal{transform:translateX(-70px) rotate(calc(var(--r) - 8deg))}
+.rev .frame.reveal{transform:translateX(70px) rotate(calc(var(--r) + 8deg))}
+.txt.reveal{transform:translateY(40px)}
+.reveal.in{opacity:1}.frame.reveal.in{transform:rotate(var(--r))}.txt.reveal.in{transform:none}
+.txt.reveal{transition-delay:.25s}
+@keyframes up{to{opacity:1;transform:none}}@keyframes bob{50%{transform:translateY(10px)}}
+@keyframes float{50%{transform:translate(20px,-30px)}}
+@media(max-width:760px){.slide,.slide.rev{flex-direction:column;gap:32px}.txt{max-width:90vw}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.hero h1 span,.hero p{opacity:1;transform:none}}
+.letter,.audio{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:60px 6vw;scroll-snap-align:start}
+.letter{background:linear-gradient(160deg,#efe3ff,#d6e8ff 60%,#ffe4f1)}
+.paper{position:relative;max-width:640px;background:#ffffffc7;backdrop-filter:blur(6px);padding:40px 34px;border-radius:26px;box-shadow:0 18px 40px #6a52c93d;border:3px solid #c9b6ff}
+.paper p{font-family:'Dancing Script',cursive,serif;font-size:clamp(1.25rem,4.6vw,1.65rem);line-height:1.55;margin:0 0 18px;color:#5a47a8}
+.paper .sig{text-align:right;color:#4a8fe7;font-size:1.9rem;margin:24px 0 0}
+.audio{background:linear-gradient(150deg,#d3eaff,#e6defa)}
+.acard{text-align:center;max-width:420px;width:100%;background:#ffffffb0;backdrop-filter:blur(6px);padding:36px 24px;border-radius:30px;border:3px solid #b9d0ff;box-shadow:0 18px 40px #6a52c93d}
+.avatar{position:relative;width:200px;height:200px;margin:0 auto 24px}
+.avatar img{position:relative;width:100%;height:100%;object-fit:cover;object-position:50% 25%;border-radius:50%;border:6px solid #fff;box-shadow:0 0 0 5px #b79cff}
+.ring{position:absolute;inset:0;border-radius:50%;border:3px solid #9cc3ff;opacity:0}
+.playing .ring{animation:pulse 2s infinite}.playing .r2{animation-delay:1s}
+.acard small{color:#4a8fe7;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.acard h2{font-family:'Dancing Script',cursive,serif;font-size:2.2rem;margin:6px 0 20px;color:#6a52c9}
+audio{width:100%}
+@keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.fall{position:absolute;top:-40px;animation:fall linear forwards;will-change:transform;text-shadow:0 2px 8px #ffffff99}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.9}90%{opacity:.8}100%{transform:translate(var(--dx),110vh) rotate(var(--rot));opacity:0}}
+</style></head><body><div id="rain"></div>
+<header class="hero">
+<div class="blob" style="width:220px;height:220px;background:#b9d6ff;top:8%;left:-60px"></div>
+<div class="blob" style="width:260px;height:260px;background:#d8c2ff;bottom:6%;right:-80px;animation-delay:-3s"></div>
+<div class="blob" style="width:120px;height:120px;background:#ffd3ea;top:55%;left:12%;animation-delay:-5s"></div>
+<h1 id="t"></h1><p>♡ desliza ♡</p><div class="hint">⌄</div></header>
+<section class="slide " style="--a:#dcecff;--c:#e9dcff;--r:-4deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto01.jpg" alt="Foto 1"></div>
+<div class="txt reveal"><small>Recuerdo 01</small><p>Mi amor, recuerdo la vez que viniste a mi casa y fui el hombre más feliz del mundo al pasar esa tarde hermosa contigo. Extraño esos días vívidamente, y aunque no nos podamos ver mucho, aprecio cada segundo en el que me escribes, me hablas y te veo, aunque no sea en persona. Me has hecho el hombre más feliz del mundo y me siento tan alegre de que estés en mi vida.</p></div></section>
+<section class="slide rev" style="--a:#efe3ff;--c:#d6e8ff;--r:3deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto02.jpg" alt="Foto 2"></div>
+<div class="txt reveal"><small>Recuerdo 02</small><p>Me enamoré tanto de esa foto. Verte todos los días al prender mi teléfono me hace extrañarte, pero también me hace recordar a la hermosa mujer con la que estoy, y pensar en eso me hace muy feliz. Amo verte en mi teléfono todos los días y presumirte cada vez que me preguntan por ti cuando ven esta foto de mi niña consentida hermosa.</p></div></section>
+<section class="slide " style="--a:#d9f0ff;--c:#f3e1ff;--r:-2.5deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto03.jpg" alt="Foto 3"></div>
+<div class="txt reveal"><small>Recuerdo 03</small><p>Recuerdo el día que nos besamos sin protección y, lastimosamente, no me tomé la pastilla a tiempo. Fue muy hermoso cuando tuve contracciones y me agarraste de la mano para ir al hospital, y cuando por fin nació el niño y tú lo viste diciéndote papá. Fue el más hermoso recuerdo de mi vida.</p></div></section>
+<section class="slide rev" style="--a:#e6defa;--c:#d3eaff;--r:4deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto04.jpg" alt="Foto 4"></div>
+<div class="txt reveal"><small>Recuerdo 04</small><p>Esta foto siempre, al verla en nuestro gran chat de WhatsApp donde han pasado cosas buenas y malas, me quedará en el pensamiento: las cientos de horas que hemos hablado y lo feliz que me hace comunicarme contigo de cualquier manera. Aunque ya no hablemos tanto como antes, me da felicidad saber que cada vez que me pides llamarme y hablar simplemente conmigo, me haces el hombre más feliz del mundo. Te amo.</p></div></section>
+<section class="slide " style="--a:#dcecff;--c:#e9dcff;--r:-4deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto05.jpg" alt="Foto 5"></div>
+<div class="txt reveal"><small>Recuerdo 05</small><p>Ese hombre tan guapo que veo ahí 💗♥️😘💏💗😻😘💗😘💗💏😘 me derrite el corazón jajsjajjasjsj</p></div></section>
+<section class="slide rev" style="--a:#efe3ff;--c:#d6e8ff;--r:3deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto06.jpg" alt="Foto 6"></div>
+<div class="txt reveal"><small>Recuerdo 06</small><p>Todos los días que me envías una foto como esta me hacen recordar que aún te importo, y que al único que dejas que te vea tal y como eres es a mí. Me hace sentir el hombre más especial del mundo y único, porque significa que valgo mucho para ti y dejas que te vea así, hermosa, mi niña chiquita bella. Te amo.</p></div></section>
+<section class="slide " style="--a:#d9f0ff;--c:#f3e1ff;--r:-2.5deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto07.jpg" alt="Foto 7"></div>
+<div class="txt reveal"><small>Recuerdo 07</small><p>Cada vez que veo tus ojos mirándome de esa manera enciendes una llama en mi corazón que jamás pensé sentir. Eres tan hermosa y me dejas la piel de gallina de lo sorprendido que me dejas cada vez que veo una imagen tan hermosa y angelical de tu belleza. Eres la más hermosa y para mí eres mi gran amor, y nada cambiará eso.</p></div></section>
+<section class="slide rev" style="--a:#e6defa;--c:#d3eaff;--r:4deg">
+<div class="frame reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><img src="assets/foto08.jpg" alt="Foto 8"></div>
+<div class="txt reveal"><small>Recuerdo 08</small><p>Me encantas. Me envías fotos así, te ves tan kiut y me das tanta ternura, me dejas el corazón como de un pollito y haces que encuentre en mí una forma de ser que nunca había tenido con nadie. Eres de lo más especial para mí, y me da tanta ternura verte y amarte tanto. Me aceleras el corazón cada vez que pienso en ti.</p></div></section>
+<section class="letter"><div class="paper reveal"><span class="orn o1">✦</span><span class="orn o2">♡</span><p>Emily, mi vida, te agradezco tanto por ser parte de mi vida. Has sido un pilar emocional muy grande para mí estos últimos meses. Aunque últimamente hemos tenido dudas acerca de cómo sentirnos y de cómo seguirán las cosas, no me cabe la menor duda de que mi amor es correspondido, y te agradezco tanto todos los momentos en que te preocupas por mí y me demuestras tu amor. La vez que me abrazaste en la foto me hizo sentir muy feliz, ya que sé que te dan vergüenza esas cosas en público.</p><p>Quiero contigo crear más recuerdos así. Estos recuerdos que te mostré hoy son una pizca de lo que quiero hacer contigo durante esta etapa de mi vida, que es conocer a la mujer que amo. Quiero que sepas que eres la mujer perfecta para mí, y aunque no nos podamos ver, te llegues a hartar de mi intensidad o tengas pensamientos negativos de nuestra relación, quiero que sepas que te amo, que seguiré siendo el hombre del que te enamoraste, y que quiero que seamos más que dos chicos que se gustan mucho.</p><p>Espero pronto verte y tener un recuerdo más juntos. Te amo, mi vida. Nunca cambies, sigue siendo como eres: mi niña consentida, amable, responsable con su familia, que piensa en su futuro y se preocupa por sus seres queridos, aunque a veces pienses que no lo haces. Eres una persona muy empática y te amo tanto por eso, porque me doy cuenta de que eres una mujer increíble y la que vale la pena haber conocido, y esforzarme tanto por estar contigo, consentirte y amarte.</p><p>Te amo, mi cielo, te amo.</p><p class="sig">Andre te ama con todo su corazón ♡</p></div></section>
+<section class="audio"><div class="acard reveal"><div class="avatar"><span class="ring"></span><span class="ring r2"></span><img src="assets/andre.jpg" alt="Andre"></div>
+<small>Un mensaje para ti</small><h2>Escucha mi voz, Emily ♡</h2><audio id="au" controls preload="metadata" src="assets/audio.m4a"></audio></div></section>
+
+<script>
+var w="Todo mi amor para Emily".split(" "),h=document.getElementById("t"),d=0;
+w.forEach(function(x,i){var s=document.createElement("span");s.textContent=x+(i<w.length-1?"\u00a0":"");s.style.animationDelay=(d+=.35)+"s";if(i==w.length-1)s.innerHTML="<em>"+x+"</em> ♡";h.appendChild(s)});
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in")})},{threshold:.25});
+document.querySelectorAll(".reveal").forEach(function(e){io.observe(e)});
+var hc=['#9cc3ff','#b79cff','#ffb8dc','#c9b6ff','#8ab6f9','#ffd0e8'],rn=document.getElementById('rain');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(function(){if(document.hidden||rn.childElementCount>45)return;var e=document.createElement('span');e.className='fall';e.textContent=Math.random()<.8?'♥':'♡';e.style.left=Math.random()*100+'vw';e.style.fontSize=(12+Math.random()*22)+'px';e.style.color=hc[Math.floor(Math.random()*hc.length)];e.style.setProperty('--dx',(Math.random()*120-60)+'px');e.style.setProperty('--rot',(Math.random()*120-60)+'deg');var s=6+Math.random()*6;e.style.animationDuration=s+'s';rn.appendChild(e);setTimeout(function(){e.remove()},s*1000)},380);
+var au=document.getElementById('au'),ac=document.querySelector('.acard');au.onplay=function(){ac.classList.add('playing')};au.onpause=au.onended=function(){ac.classList.remove('playing')};</script></body></html>
